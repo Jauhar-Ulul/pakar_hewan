@@ -9,9 +9,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final String logoImage = 'assets/image/logo.jpg';
-  final String settingImage = 'assets/image/settings.png';
-  final String playButton = 'assets/image/play.png';
-  final String achieveButton = 'assets/image/achievement.png';
 
   @override
   Widget build(BuildContext context) {
