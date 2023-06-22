@@ -20,23 +20,69 @@ class Ciri {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
+  List<String> listKategori = ['Makanan', 'Hidup', 'berjalan', 'kulit'];
   List<Ciri> listCiri = [
+    // M1
     Ciri(
         gambarCiri: 'assets/image/ciri/daging.svg',
         soal: 'Apakah hewan pemakan daging',
         kategoriCiri: 'Makanan'),
+    // M2
     Ciri(
         gambarCiri: 'assets/image/ciri/salad.svg',
         soal: 'Apakah hewan pemakan Tumbuhan',
-        kategoriCiri: 'Makanan')
+        kategoriCiri: 'Makanan'),
+    // M3
+    Ciri(
+        gambarCiri: 'assets/image/ciri/salad.svg',
+        soal: 'Apakah hewan pemakan Segala',
+        kategoriCiri: 'Makanan'),
+    // M4
+    Ciri(
+        gambarCiri: 'assets/image/ciri/salad.svg',
+        soal: 'Apakah hewan Hidup di Darat',
+        kategoriCiri: 'Hidup'),
+    // M5
+    Ciri(
+        gambarCiri: 'assets/image/ciri/salad.svg',
+        soal: 'Apakah hewan Hidup di Air',
+        kategoriCiri: 'Hidup'),
+    // M6
+    Ciri(
+        gambarCiri: 'assets/image/ciri/salad.svg',
+        soal: 'Apakah hewan berjalan dengan kaki',
+        kategoriCiri: 'berjalan'),
+    // M7
+    Ciri(
+        gambarCiri: 'assets/image/ciri/salad.svg',
+        soal: 'Apakah hewan berjalan dengan perut',
+        kategoriCiri: 'berjalan'),
+    // M8
+    Ciri(
+        gambarCiri: 'assets/image/ciri/salad.svg',
+        soal: 'Apakah hewan berjalan dengan Sirip',
+        kategoriCiri: 'berjalan'),
+    // M9
+    Ciri(
+        gambarCiri: 'assets/image/ciri/salad.svg',
+        soal: 'Apakah hewan bersisik',
+        kategoriCiri: 'kulit'),
+    // M10
+    Ciri(
+        gambarCiri: 'assets/image/ciri/salad.svg',
+        soal: 'Apakah hewan berbulu',
+        kategoriCiri: 'kulit'),
   ];
 
   List<String> hasilCiri = [];
   int noSoal = 0;
+  int noKategori = 0;
 
   @override
   void initState() {
     noSoal = 0;
+    noKategori = 0;
+
     // TODO: implement initState
     super.initState();
   }
@@ -74,11 +120,14 @@ class _QuestionPageState extends State<QuestionPage> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+              margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(15)),
-              child: Text(
-                listCiri[noSoal].soal,
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              child: Container(
+                child: Text(
+                  listCiri[noSoal].soal,
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             SizedBox(
@@ -87,22 +136,33 @@ class _QuestionPageState extends State<QuestionPage> {
             ElevatedButton(
               onPressed: () {
                 noSoal++;
+                noKategori++;
                 hasilCiri.add('M' + (noSoal).toString());
-                print(noSoal);
                 print(hasilCiri);
-                if (noSoal < listCiri.length) {
-                  setState(() {});
+                print(noSoal);
+                print(noKategori);
+
+                if (noSoal < listCiri.length &&
+                    noKategori < listKategori.length) {
+                  for (var i = 0; i < listCiri.length; i++) {
+                    if (listCiri[noSoal].kategoriCiri.toString() !=
+                        listKategori[noKategori].toString()) {
+                      noSoal++;
+                      i++;
+                    } else {
+                      setState(() {});
+                      break;
+                    }
+                  }
                 } else {
-                  noSoal = 0;
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => Result(
-                        hasil: hasilCiri,
+                        hasil: hasilCiri.toString(),
                       ),
                     ),
                   );
-                  print(noSoal);
                 }
               },
               child: Text(
@@ -126,7 +186,7 @@ class _QuestionPageState extends State<QuestionPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Result(hasil: hasilCiri),
+                      builder: (context) => Result(hasil: hasilCiri.toString()),
                     ),
                   );
                   print(noSoal);

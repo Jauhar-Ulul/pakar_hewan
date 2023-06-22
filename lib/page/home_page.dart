@@ -40,20 +40,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
-            IconButton(
-              icon: Icon(
-                Icons.workspace_premium_rounded,
-              ),
-              iconSize: 80,
-              color: Color.fromARGB(255, 251, 244, 78),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const AchievementPage()),
-                );
-              },
-            ),
+            // IconButton(
+            //   icon: Icon(
+            //     Icons.workspace_premium_rounded,
+            //   ),
+            //   iconSize: 80,
+            //   color: Color.fromARGB(255, 251, 244, 78),
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (context) => const AchievementPage()),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),
